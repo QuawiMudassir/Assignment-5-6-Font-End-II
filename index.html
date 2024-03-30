@@ -1,0 +1,119 @@
+<!--
+    Name: Mohammed Abdul Quawi Mudassir
+    ID: C0911573
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #5559; /* Change color to blue */
+        }
+
+        .input-box {
+            margin-bottom: 15px;
+        }
+
+        .input-box label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .input-box select, 
+        .input-box input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .input-box input {
+            width: calc(100% - 18px);
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            text-align: center;
+            color: #555; /* Change result text color */
+            margin-top: 10px; /* Add margin to separate from button */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Currency Converter</h1>
+        <div class="input-box">
+            <label for="currency">Currency:</label>
+            <select id="currency">
+                <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+                <option value="USD">🇺🇸 USD - US Dollar</option>
+            </select>
+        </div>
+        <div class="input-box">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount">
+        </div>
+        <div class="btn-container">
+            <button onclick="convert()">Convert</button>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function convert() {
+            const currency = document.getElementById('currency').value;
+            const amount = document.getElementById('amount').value;
+
+            if (!amount || isNaN(amount)) {
+                alert('Please enter a valid amount.');
+                return;
+            }
+
+            const exchangeRate = currency === 'CAD' ? 0.8 : 1.25; // Sample exchange rates
+            const convertedAmount = (parseFloat(amount) * exchangeRate).toFixed(3);
+            document.getElementById('result').innerText = `${amount} ${currency} = ${convertedAmount} ${currency === 'CAD' ? 'USD' : 'CAD'}`;
+        }
+    </script>
+</body>
+</html>
